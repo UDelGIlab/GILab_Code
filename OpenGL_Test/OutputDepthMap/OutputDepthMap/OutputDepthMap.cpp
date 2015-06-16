@@ -17,20 +17,6 @@
  
 #define M_PI       3.14159265358979323846
  
-// Data for drawing Axis
-float verticesAxis[] = {-20.0f,   0.0f, 0.0f, 1.0f,
-						 20.0f,   0.0f, 0.0f, 1.0f,
-						  0.0f, -20.0f, 0.0f, 1.0f,
-						  0.0f,  20.0f, 0.0f, 1.0f,
-						  0.0f, 0.0f, -20.0f, 1.0f,
-						  0.0f, 0.0f,  20.0f, 1.0f};
- 
-float colorAxis[] = {   0.0f, 0.0f, 0.0f, 0.0f,
-            0.0f, 0.0f, 0.0f, 0.0f,
-            0.0f, 0.0f, 0.0f, 0.0f,
-            0.0f, 0.0f, 0.0f, 0.0f,
-            0.0f, 0.0f, 0.0f, 0.0f,
-            0.0f, 0.0f, 0.0f, 0.0f};
  
 // Data for triangle 1
 float vertices1[] = {   -0.5f, 0.0f, -3.0f, 1.0f,
@@ -221,7 +207,7 @@ void changeSize(int w, int h) {
     glViewport(0, 0, w, h);
  
     ratio = (1.0f * w) / h;
-    buildProjectionMatrix(53.13f, ratio, 1.0f, 30.0f);
+    buildProjectionMatrix(92.34f, ratio, 1.0f, 30.0f);
 }
  
 void setupBuffers() {
@@ -266,23 +252,7 @@ void setupBuffers() {
     glEnableVertexAttribArray(colorLoc);
     glVertexAttribPointer(colorLoc, 4, GL_FLOAT, 0, 0, 0);
  
-    //
-    // This VAO is for the Axis
-    //
-    glBindVertexArray(vao[2]);
-    // Generate two slots for the vertex and color buffers
-    glGenBuffers(2, buffers);
-    // bind buffer for vertices and copy data into buffer
-    glBindBuffer(GL_ARRAY_BUFFER, buffers[0]);
-    glBufferData(GL_ARRAY_BUFFER, sizeof(verticesAxis), verticesAxis, GL_STATIC_DRAW);
-    glEnableVertexAttribArray(vertexLoc);
-    glVertexAttribPointer(vertexLoc, 4, GL_FLOAT, 0, 0, 0);
  
-    // bind buffer for colors and copy data into buffer
-    glBindBuffer(GL_ARRAY_BUFFER, buffers[1]);
-    glBufferData(GL_ARRAY_BUFFER, sizeof(colorAxis), colorAxis, GL_STATIC_DRAW);
-    glEnableVertexAttribArray(colorLoc);
-    glVertexAttribPointer(colorLoc, 4, GL_FLOAT, 0, 0, 0);
  
 }
  
@@ -426,7 +396,7 @@ int main(int argc, char **argv) {
     glutInit(&argc, argv);
     glutInitDisplayMode(GLUT_DEPTH | GLUT_DOUBLE | GLUT_RGBA);
     glutInitWindowPosition(100,100);
-    glutInitWindowSize(320,320);
+    glutInitWindowSize(1000,1000);
     glutCreateWindow("Lighthouse 3D");
  
     glutDisplayFunc(renderScene);
